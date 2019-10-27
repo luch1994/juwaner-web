@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/public/css/mdui.min.css"/>
+    <link rel="stylesheet" href="/public/css/admin.css"/>
+    <script src="/public/js/mdui.min.js"></script>
+  </head>
+  <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
+    {% block body %}
+    {% endblock %}
+    <script>
+      function copyText(txt) {
+        var textarea = document.createElement('textarea');
+        textarea.value = txt;
+        textarea.style.opacity = 0;
+        document
+          .body
+          .appendChild(textarea);
+        textarea.select();
+        document.execCommand('Copy');
+        document
+          .body
+          .removeChild(textarea);
+
+        mdui.alert('复制成功');
+      }
+    </script>
+  </body>
+</html>

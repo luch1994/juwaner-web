@@ -1,0 +1,31 @@
+{% extends "../base.nj" %}
+
+{% block body %}
+  <div class="mdui-row">
+    <div class="mdui-col-xs-12 mdui-col-sm-9">
+      {% for movies in movieList %}
+        <h1>{{movies.name}}</h1>
+        <div class="mdui-row ">
+          {% for movie in movies.data %}
+            <a href="/m/{{movie.id}}" class="my-card mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-4">
+              <div class="my-card-img">
+                <img src="/public/img/movies/{{movie.id}}.jpg"/>
+              </div>
+              <div class="my-card-txt">
+                <span>{{movie.name}}</span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="mdui-col-xs-12 mdui-col-sm-3">
+      {% import "../template.nj" as template %}
+      {% for movies in movieList %}
+        <h4>{{movies.name}}</h4>
+        {{ template.rowList(movies.data) }}
+      {% endfor %}
+    </div>
+  </div>
+  <div></div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "../base.nj" %}
+
+{% block body %}
+  <link rel="stylesheet" href="/public/css/movie.css"/>
+  <div class="mdui-row">
+    <div class="mdui-col-xs-12 mdui-col-sm-9">
+      <h1>{{movie.name}}</h1>
+      <div class="main-info">
+        <div class="img-info">
+          <img class="main-img" src="/public/img/movies/{{movie.id}}.jpg"/>
+        </div>
+        <div class="other-info">
+          {{movie.db_info | safe}}
+        </div>
+      </div>
+      <h4>剧情简介</h4>
+      <p>{{movie.description | safe}}</p>
+      {% for links in linkList %}
+        <div class="table-box">
+          <h4>复制下载链接到迅雷或者百度网盘等软件下载</h4>
+          <p>
+            <button class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple" onclick="copyAllLink({{links | dump}}, 'ed2k')">复制所有ed2k链接</button>
+            <button class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple" onclick="copyAllLink({{links | dump}}, 'magnet')">复制所有磁力链接</button>
+          </p>
+          {% for link in links %}
+            <div class="table-row">
+              <div class="t-name">{{link.txt}}</div>
+              {% if link.size %}
+                <div class="t-size">{{link.size}}</div>
+              {% endif %}
+              {% if link.ed2k != '' %}
+                <div class="t-ed2k t-link">
+                  <a href="javascript: void(0);" onclick="copyText('{{link.ed2k}}')" >ed2k</a>
+                </div>
+              {% endif %}
+              {% if link.magnet != '' %}
+                <div class="t-magnet t-link">
+                  <a href="javascript: void(0);" onclick="copyText('{{link.magnet}}')" >magnet</a>
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="mdui-col-xs-12 mdui-col-sm-3">
+      {% import "../template.nj" as template %}
+      {% for movies in movieList %}
+        <h4>{{movies.name}}</h4>
+        {{ template.rowList(movies.data) }}
+      {% endfor %}
+    </div>
+  </div>
+  <script>
+    function copyAllLink(links, name) {
+      let txt = '';
+      for (let link of links) {
+        if (link[name]) {
+          txt += link[name];
+          txt += '\n'
+        }
+      }
+      if (txt) {
+        copyText(txt);
+      }
+    }
+  </script>
+{% endblock %}

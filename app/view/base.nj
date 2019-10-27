@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/public/css/mdui.min.css"/>
+    <link rel="stylesheet" href="/public/css/common.css"/>
+    <script src="/public/js/mdui.min.js"></script>
+  </head>
+  <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
+    <div class="mdui-appbar mdui-appbar-fixed mdui-color-theme">
+      <div class="mdui-container">
+        <div class="mdui-row">
+          <div class="mdui-col-xs-12">
+            <div class="mdui-toolbar ">
+              <a href="/" class="mdui-typo-title mdui-typo-headline">剧丸儿基地</a>
+              <div class="mdui-toolbar-spacer"></div>
+              <form class="search-form" method="get" action="/search" >
+                <input type="text" name="search" placeholder="搜索美剧名称" class="search-input"/>
+                <button type="submit" class="mdui-btn mdui-btn-icon">
+                  <i class="mdui-icon material-icons">&#xe8b6;</i>
+                </button>
+              </form>
+            </div>
+            <div class="mdui-tab m-tab" >
+              {% for category in categories %}
+                <a href="/c/{{category.id}}" class="mdui-ripple">{{category.name}}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mdui-container main-container">
+      <div class="mdui-row">
+        <div class="mdui-col-xs-12">
+          {% block body %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <div class="mdui-fab-wrapper" mdui-fab="{trigger: 'hover'}">
+      <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
+        <i class="mdui-icon material-icons">add</i>
+        <i class="mdui-icon mdui-fab-opened material-icons">add</i>
+      </button>
+      <div class="mdui-fab-dial">
+        <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink">
+          <i class="mdui-icon material-icons">backup</i>
+        </button>
+        <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red">
+          <i class="mdui-icon material-icons">bookmark</i>
+        </button>
+        <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"  mdui-dialog="{target: '#code-img-dialog'}">
+          <i class="mdui-icon material-icons">&#xe32c;</i>
+        </button>
+        <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-blue" mdui-dialog="{target: '#help-dialog'}">
+          <i class="mdui-icon material-icons">&#xe8fd;</i>
+        </button>
+      </div>
+    </div>
+    <div class="mdui-dialog m-dialog" id="help-dialog">
+      <div class="mdui-container">
+        <h4>点击按钮复制链接</h4>
+        <p>
+          <img src="/public/img/help/help-01.png"/>
+        </p>
+        <h4>使用百度网盘的离线下载或者使用迅雷等其他软件也可下载</h4>
+        <p>
+          <img src="/public/img/help/help-02.png"/>
+        </p>
+      </div>
+    </div>
+    <div class="mdui-dialog m-dialog" id="code-img-dialog" style="max-width: 300px">
+      <div style="text-align: center;">
+        <p>
+          <img src="/public/img/code-img/wxcode.jpg" style="max-width: 256px;"/>
+        </p>
+        <p>
+          <img src="/public/img/code-img/qrcode.png" style="max-width: 180px;"/>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      function copyText(txt) {
+        var textarea = document.createElement('textarea');
+        textarea.value = txt;
+        textarea.style.opacity = 0;
+        document
+          .body
+          .appendChild(textarea);
+        textarea.select();
+        document.execCommand('Copy');
+        document
+          .body
+          .removeChild(textarea);
+
+        mdui.alert('复制成功');
+      }
+    </script>
+  </body>
+</html>
