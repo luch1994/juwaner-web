@@ -18,6 +18,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1571481789333_4589';
 
   // add your middleware config here
+  // config.middleware = [ 'adminCheck' ];
   config.middleware = [];
 
   // add your user config here
@@ -45,6 +46,10 @@ module.exports = appInfo => {
     defaultViewEnfine: 'nunjuecks',
     defaultExtension: '.nj',
   };
+
+  // config.adminCheck = {
+  //   urls: [ '/xxxadmin/index' ],
+  // };
 
   config.passportLocal = {
     usernameFiled: 'username',

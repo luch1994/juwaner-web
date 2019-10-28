@@ -1,0 +1,5 @@
+{% extends "./base.nj" %}
+
+{% block body %}
+<h1>XXXAdmin</h1>
+{% endblock %}
