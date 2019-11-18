@@ -7,7 +7,7 @@
         <h1>{{movies.name}}</h1>
         <div class="mdui-row ">
           {% for movie in movies.data %}
-            <a href="/m/{{movie.id}}" class="my-card mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-4">
+            <a href="/m/{{movie.id}}?c={{movie.category}}" class="my-card mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-4">
               <div class="my-card-img">
                 <img src="/public/img/movies/{{movie.id}}.jpg"/>
               </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="mdui-col-xs-12 mdui-col-sm-3">
       {% import "../template.nj" as template %}
-      {% for movies in movieList %}
+      {% for movies in sideList %}
         <h4>{{movies.name}}</h4>
         {{ template.rowList(movies.data) }}
       {% endfor %}

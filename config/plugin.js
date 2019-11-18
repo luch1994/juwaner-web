@@ -22,4 +22,8 @@ module.exports = {
     enable: true,
     package: 'egg-passport-local',
   },
+  cache: {
+    enable: true,
+    package: 'egg-cache',
+  },
 };

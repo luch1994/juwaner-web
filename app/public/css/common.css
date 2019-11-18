@@ -18,7 +18,7 @@ input {
 }
 
 .search-form {
-  width: 260px;
+  max-width: 150px;
   height: 36px;
   display: flex;
   flex-direction: row;
@@ -29,11 +29,11 @@ input {
 }
 
 .search-input {
+  max-width: 114px;
   height: 28px;
   padding: 0;
   margin: 0;
   border: none;
-  width: 224px;
   background: transparent;
 }
 
@@ -162,6 +162,14 @@ a {
 @media (min-width: 600px) {
   .page-box {
     font-size: 14px;
+  }
+
+  .search-form {
+    max-width: 260px;
+  }
+
+  .search-input {
+    width: 224px;
   }
 }
 

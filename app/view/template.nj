@@ -1,5 +1,5 @@
 {% macro rowItem(info) %}
-  <a href="/m/{{info.id}}" class="row-box">
+  <a href="/m/{{info.id}}?c={{info.category}}" class="row-box">
     <div class="row-info">
       <div class="row-info-title">{{info.name}}</div>
       <div class="row-info-content">{{info.description}}</div>

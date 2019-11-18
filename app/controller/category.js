@@ -13,7 +13,7 @@ class CategoryController extends Controller {
     } else {
       pageIndex = +pageIndex;
     }
-    const pageSize = 24;
+    const pageSize = 18;
     const totalPage = Math.ceil(category.total_count / pageSize);
     const pages = [];
     const pageLen = 5;
@@ -58,15 +58,15 @@ class CategoryController extends Controller {
         text: '>>',
       });
     }
-    const recommendList = await ctx.service.movie.findRecommend();
-    const movieList = [
+    const sideData = await ctx.service.index.getSide();
+    const sideList = [
       {
-        name: '热门',
-        data: recommendList,
+        name: '推荐',
+        data: sideData,
       },
     ];
     const movies = await ctx.service.movie.findAll(ctx.params.id, pageIndex, pageSize);
-    await ctx.render('category/index.nj', { title: `剧丸儿-${category.name}`, category, categories, movies, pages, movieList });
+    await ctx.render('category/index.nj', { title: `剧丸儿-${category.name}`, category, categories, movies, pages, sideList });
   }
 }
 

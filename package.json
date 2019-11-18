@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "egg": "^2.15.1",
+    "egg-cache": "0.0.6",
     "egg-mysql": "^3.0.0",
     "egg-passport": "^2.1.0",
     "egg-passport-local": "^1.2.1",

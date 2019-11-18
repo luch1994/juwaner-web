@@ -1,0 +1,10 @@
+{"id":1,"name":"美剧","total_count":0,"url":"","parent":0}
+{"id":2,"name":"奇幻/科幻","total_count":638,"url":"https://m.ttkmj.net/c/qhkh","parent":1}
+{"id":3,"name":"律政/医务","total_count":205,"url":"https://m.ttkmj.net/c/lzyw","parent":1}
+{"id":4,"name":"情景/喜剧","total_count":942,"url":"https://m.ttkmj.net/c/qjxj","parent":1}
+{"id":5,"name":"罪案/谍战","total_count":831,"url":"https://m.ttkmj.net/c/zadz","parent":1}
+{"id":6,"name":"历史/剧情","total_count":573,"url":"https://m.ttkmj.net/c/lsjq","parent":1}
+{"id":7,"name":"动作/战争","total_count":116,"url":"https://m.ttkmj.net/c/dzzz","parent":1}
+{"id":8,"name":"都市/情感","total_count":238,"url":"https://m.ttkmj.net/c/dsqg","parent":1}
+{"id":9,"name":"灵异/惊悚","total_count":274,"url":"https://m.ttkmj.net/c/lyjs","parent":1}
+{"id":10,"name":"动漫/卡通","total_count":179,"url":"https://m.ttkmj.net/c/dmkt","parent":1}

@@ -36,6 +36,23 @@ module.exports = appInfo => {
     },
   };
 
+  config.cache = {
+    default: 'memory',
+    stores: {
+      memory: {
+        driver: 'memory',
+        max: 100,
+        ttl: 0,
+      },
+    },
+  };
+
+  config.weixin = {
+    appid: 'wxbf20614fb214491f',
+    appSecret: '295b0d8fa6bee153d6dfcd2983cb28c5',
+    cloudenv: 'juwaner-kk6ht',
+  };
+
   config.view = {
     root: [
       path.join(appInfo.baseDir, 'app/view'),
