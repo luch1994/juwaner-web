@@ -46,12 +46,12 @@
         <i class="mdui-icon mdui-fab-opened material-icons">add</i>
       </button>
       <div class="mdui-fab-dial">
-        <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink">
+        {# <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink">
           <i class="mdui-icon material-icons">backup</i>
         </button>
         <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red">
           <i class="mdui-icon material-icons">bookmark</i>
-        </button>
+        </button> #}
         <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-orange"  mdui-dialog="{target: '#code-img-dialog'}">
           <i class="mdui-icon material-icons">&#xe32c;</i>
         </button>

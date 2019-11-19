@@ -30,7 +30,8 @@ class HomeController extends Controller {
     const search = decodeURIComponent(ctx.query.search);
     let searchResult = moviesData.filter(item => {
       return item.title.indexOf(search) >= 0;
-    }).slice(0, 20);
+    }).slice(0, 24);
+
     searchResult = searchResult.map(item => {
       return {
         id: item.id,
@@ -38,14 +39,19 @@ class HomeController extends Controller {
         name: item.title,
       };
     });
+    const sideData = await ctx.service.index.getSide();
+    const sideList = [{
+      name: '推荐',
+      data: sideData,
+    }];
     // const searchList = await ctx.service.movie.search(search);
-    // const movieList = [
-    //   {
-    //     name: '搜索结果',
-    //     data: searchList,
-    //   },
-    // ];
-    await ctx.render('home/index.nj', { title: '搜索结果', categories, searchResult });
+    const movieList = [
+      {
+        name: '搜索结果',
+        data: searchResult,
+      },
+    ];
+    await ctx.render('home/index.nj', { title: '搜索结果', categories, sideList, movieList });
   }
 }
 
