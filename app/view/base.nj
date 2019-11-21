@@ -4,9 +4,12 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/public/css/mdui.min.css"/>
-    <link rel="stylesheet" href="/public/css/common.css"/>
-    <script src="/public/js/mdui.min.js"></script>
+    {# <link rel="stylesheet" href="/public/css/mdui.min.css"/> #}
+    {# <link rel="stylesheet" href="/public/css/common.css"/> #}
+    {# <script src="/public/js/mdui.min.js"></script> #}
+    <link rel="stylesheet" href="//juwaner.oss-cn-hangzhou.aliyuncs.com/css/common.css"/>
+    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
   </head>
   <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
     <div class="mdui-appbar mdui-appbar-fixed mdui-color-theme">
@@ -64,21 +67,21 @@
       <div class="mdui-container">
         <h4>点击按钮复制链接</h4>
         <p>
-          <img src="/public/img/help/help-01.png"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-01.png?x-oss-process=style/default"/>
         </p>
         <h4>使用百度网盘的离线下载或者使用迅雷等其他软件也可下载</h4>
         <p>
-          <img src="/public/img/help/help-02.png"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-02.png?x-oss-process=style/default"/>
         </p>
       </div>
     </div>
     <div class="mdui-dialog m-dialog" id="code-img-dialog" style="max-width: 300px">
       <div style="text-align: center;">
         <p>
-          <img src="/public/img/code-img/wxcode.jpg" style="max-width: 256px;"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/wxcode.jpg?x-oss-process=style/default" style="max-width: 256px;"/>
         </p>
         <p>
-          <img src="/public/img/code-img/qrcode.png" style="max-width: 180px;"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/qrcode.png?x-oss-process=style/default" style="max-width: 180px;"/>
         </p>
       </div>
     </div>

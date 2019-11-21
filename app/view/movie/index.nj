@@ -1,13 +1,13 @@
 {% extends "../base.nj" %}
 
 {% block body %}
-  <link rel="stylesheet" href="/public/css/movie.css"/>
+  <link rel="stylesheet" href="//juwaner.oss-cn-hangzhou.aliyuncs.com/css/movie.css"/>
   <div class="mdui-row">
     <div class="mdui-col-xs-12 mdui-col-sm-9">
       <h1>{{movie.name}}</h1>
       <div class="main-info">
         <div class="img-info">
-          <img class="main-img" src="/public/img/movies/{{movie.id}}.jpg"/>
+          <img class="main-img" src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/movies/{{movie.id}}.jpg?x-oss-process=style/default"/>
         </div>
         <div class="other-info">
           {{movie.db_info | safe}}

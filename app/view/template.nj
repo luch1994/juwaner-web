@@ -5,7 +5,8 @@
       <div class="row-info-content">{{info.description}}</div>
     </div>
     <div class="row-img">
-      <img src="/public/img/movies/{{info.id}}.jpg"/>
+      {# <img src="/public/img/movies/{{info.id}}.jpg"/> #}
+      <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/movies/{{info.id}}.jpg?x-oss-process=style/default" />
     </div>
   </a>
 {% endmacro %}

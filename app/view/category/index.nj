@@ -8,7 +8,7 @@
         {% for movie in movies %}
           <a href="/m/{{movie.id}}?c={{movie.category}}" class="my-card mdui-col-md-2 mdui-col-sm-3 mdui-col-xs-4">
             <div class="my-card-img">
-              <img src="/public/img/movies/{{movie.id}}.jpg"/>
+              <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/movies/{{movie.id}}.jpg?x-oss-process=style/default"/>
             </div>
             <div class="my-card-txt">
               <span>{{movie.name}}</span>
