@@ -6,11 +6,40 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="/public/css/mdui.min.css"/>
     <link rel="stylesheet" href="/public/css/admin.css"/>
+    <link rel="stylesheet" href="/public/css/gm.css"/>
     <script src="/public/js/mdui.min.js"></script>
+    <script src="/public/js/gm.js"></script>
   </head>
-  <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
-    {% block body %}
-    {% endblock %}
+  <body class="mdui-theme-primary-amber mdui-theme-accent-blue mdui-appbar-with-toolbar mdui-drawer-body-left">
+    <header class="mdui-appbar mdui-appbar-fixed">
+      <div class="mdui-toolbar mdui-color-theme">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#left_drawer'}">
+          <i class="mdui-icon material-icons">menu</i>
+        </a>
+        <span class="mdui-typo-title">Title</span>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+          <i class="mdui-icon material-icons">search</i>
+        </a>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+          <i class="mdui-icon material-icons">refresh</i>
+        </a>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+          <i class="mdui-icon material-icons">more_vert</i>
+        </a>
+      </div>
+    </header>
+    <!-- 默认抽屉栏在左侧 -->
+    <div class="mdui-drawer" id="left_drawer">
+      <div class="mdui-list">
+        <a href="/xxxadmin/index" class="mdui-list-item mdui-ripple">分类</a>
+        <a href="/xxxadmin/movies" class="mdui-list-item mdui-ripple">电影</a>
+      </div>
+    </div>
+    <div class="mdui-container">
+      {% block body %}{% endblock %}
+    </div>
+
     <script>
       function copyText(txt) {
         var textarea = document.createElement('textarea');

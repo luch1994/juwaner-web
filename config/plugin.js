@@ -6,22 +6,22 @@ module.exports = {
   // static: {
   //   enable: true,
   // }
-  // mysql: {
-  //   enable: true,
-  //   package: 'egg-mysql',
-  // },
+  mysql: {
+    enable: true,
+    package: 'egg-mysql',
+  },
   nunjucks: {
     enable: true,
     package: 'egg-view-nunjucks',
   },
-  passport: {
-    enable: true,
-    package: 'egg-passport',
-  },
-  passportLocal: {
-    enable: true,
-    package: 'egg-passport-local',
-  },
+  // passport: {
+  //   enable: true,
+  //   package: 'egg-passport',
+  // },
+  // passportLocal: {
+  //   enable: true,
+  //   package: 'egg-passport-local',
+  // },
   cache: {
     enable: true,
     package: 'egg-cache',

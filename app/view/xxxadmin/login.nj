@@ -1,5 +1,33 @@
-{% extends "./base.nj" %}
-
-{% block body %}
-<h1>Login</h1>
-{% endblock %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <title>{{title}}</title>
+    {# <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script> #}
+    <link rel="stylesheet" href="/public/css/mdui.min.css"/>
+    <script src="/public/js/mdui.min.js"></script>
+  </head>
+  <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
+    <div class="mdui-container">
+      <div class="mdui-row">
+        <form class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-offset-sm-3 mdui-col-md-4 mdui-col-offset-md-4" method="post" action="/xxxadmin/login">
+          <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons">account_circle</i>
+            <label class="mdui-textfield-label">username</label>
+            <input class="mdui-textfield-input" name="username" autocomplete="off"/>
+          </div>
+          <div class="mdui-textfield mdui-textfield-floating-label">
+            <i class="mdui-icon material-icons">lock</i>
+            <label class="mdui-textfield-label">password</label>
+            <input class="mdui-textfield-input" type="password" name="password" autocomplete="off"/>
+          </div>
+          <div class="mdui-col">
+            <button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" type="submit">登录</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

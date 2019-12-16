@@ -26,15 +26,15 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
-  // config.mysql = {
-  //   client: {
-  //     host: 'localhost',
-  //     port: 3306,
-  //     user: 'root',
-  //     password: '123456',
-  //     database: 'juwaner',
-  //   },
-  // };
+  config.mysql = {
+    client: {
+      host: 'localhost',
+      port: 3306,
+      user: 'root',
+      password: '123456',
+      database: 'juwaner',
+    },
+  };
 
   config.cache = {
     default: 'memory',

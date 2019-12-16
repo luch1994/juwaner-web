@@ -1,0 +1,8 @@
+{% extends "./base.nj" %}
+
+{% block body %}
+<table id="table"></table>
+
+<script src="/public/js/xxxadmin/movies.js"></script>
+
+{% endblock %}

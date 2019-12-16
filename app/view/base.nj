@@ -3,13 +3,28 @@
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+    <meta name="keywords" content="{{seoKeywords}}">
+    <meta name="description" content="{{seoDescription}}">
     <title>{{title}}</title>
-    {# <link rel="stylesheet" href="/public/css/mdui.min.css"/> #}
-    {# <link rel="stylesheet" href="/public/css/common.css"/> #}
-    {# <script src="/public/js/mdui.min.js"></script> #}
-    <link rel="stylesheet" href="//juwaner.oss-cn-hangzhou.aliyuncs.com/css/common.css"/>
-    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    {# <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
     <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="//juwaner.oss-cn-hangzhou.aliyuncs.com/css/common.css"/> #}
+    <link rel="stylesheet" href="/public/css/mdui.min.css"/>
+    <link rel="stylesheet" href="/public/css/common.css"/>
+    <script src="/public/js/mdui.min.js"></script>
+    
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?9736467b4e82718e18a6ba14f1f29b28";
+        var s = document.getElementsByTagName("script")[0];
+        s
+          .parentNode
+          .insertBefore(hm, s);
+      })();
+    </script>
+
   </head>
   <body class="mdui-theme-primary-amber mdui-theme-accent-blue">
     <div class="mdui-appbar mdui-appbar-fixed mdui-color-theme">
@@ -26,7 +41,7 @@
                 </button>
               </form>
             </div>
-            <div class="mdui-tab m-tab" >
+            <div class="mdui-tab category-tab" >
               {% for category in categories %}
                 <a href="/c/{{category.id}}" class="mdui-ripple">{{category.name}}</a>
               {% endfor %}
@@ -67,21 +82,21 @@
       <div class="mdui-container">
         <h4>点击按钮复制链接</h4>
         <p>
-          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-01.png?x-oss-process=style/default"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-01.png?x-oss-process=style/source"/>
         </p>
         <h4>使用百度网盘的离线下载或者使用迅雷等其他软件也可下载</h4>
         <p>
-          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-02.png?x-oss-process=style/default"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/help/help-02.png?x-oss-process=style/source"/>
         </p>
       </div>
     </div>
     <div class="mdui-dialog m-dialog" id="code-img-dialog" style="max-width: 300px">
       <div style="text-align: center;">
         <p>
-          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/wxcode.jpg?x-oss-process=style/default" style="max-width: 256px;"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/wxcode.jpg?x-oss-process=style/source" style="max-width: 256px;"/>
         </p>
         <p>
-          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/qrcode.png?x-oss-process=style/default" style="max-width: 180px;"/>
+          <img src="//juwaner.oss-cn-hangzhou.aliyuncs.com/img/code-img/qrcode.png?x-oss-process=style/source" style="max-width: 180px;"/>
         </p>
       </div>
     </div>

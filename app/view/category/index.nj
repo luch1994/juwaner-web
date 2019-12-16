@@ -19,7 +19,7 @@
       <div class="page-box">
         {% for page in pages %}
           {% if page.current %}
-            <a class="page-item mdui-color-theme" href="javascript:void(0);">{{page.text}}</a>
+            <a class="page-item mdui-color-theme current" href="javascript:void(0);">{{page.text}}</a>
           {% else %}
             <a class="page-item " href="{{page.url}}">{{page.text}}</a>
           {% endif %}
@@ -29,7 +29,7 @@
     <div class="mdui-col-xs-12 mdui-col-sm-3">
       {% import "../template.nj" as template %}
       {% for movies in sideList %}
-        <h4>{{movies.name}}</h4>
+        <h4 class="row-list-title">{{movies.name}}</h4>
         {{ template.rowList(movies.data) }}
       {% endfor %}
     </div>

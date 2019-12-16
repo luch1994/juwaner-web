@@ -1,5 +1,12 @@
 {% extends "./base.nj" %}
 
 {% block body %}
-<h1>XXXAdmin</h1>
+<table id="table"></table>
+
+{# <div class="mdui-dialog" id="editDialog">
+  <div></div>
+</div> #}
+
+<script src="/public/js/xxxadmin/index.js"></script>
+
 {% endblock %}

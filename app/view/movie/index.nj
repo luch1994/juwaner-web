@@ -46,7 +46,7 @@
     <div class="mdui-col-xs-12 mdui-col-sm-3">
       {% import "../template.nj" as template %}
       {% for movies in sideList %}
-        <h4>{{movies.name}}</h4>
+        <h4 class="row-list-title">{{movies.name}}</h4>
         {{ template.rowList(movies.data) }}
       {% endfor %}
     </div>

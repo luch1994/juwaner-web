@@ -58,7 +58,8 @@ class CategoryController extends Controller {
         text: '>>',
       });
     }
-    const sideData = await ctx.service.index.getSide();
+    // const sideData = await ctx.service.index.getSide();
+    const sideData = await ctx.service.movie.findRecommend(6);
     const sideList = [
       {
         name: '推荐',
@@ -66,7 +67,8 @@ class CategoryController extends Controller {
       },
     ];
     const movies = await ctx.service.movie.findAll(ctx.params.id, pageIndex, pageSize);
-    await ctx.render('category/index.nj', { title: `剧丸儿-${category.name}`, category, categories, movies, pages, sideList });
+    const categoryName = category.name;
+    await ctx.render('category/index.nj', { title: `剧丸儿-${categoryName}`, category, categories, movies, pages, sideList, seoKeywords: `剧丸儿 美剧资源 ${categoryName}`, seoDescription: `海量美剧资源 ${categoryName}` });
   }
 }
 
