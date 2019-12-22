@@ -1,12 +1,31 @@
 {% extends "./base.nj" %}
 
 {% block body %}
-<table id="table"></table>
+  <table id="table"></table>
 
-{# <div class="mdui-dialog" id="editDialog">
-  <div></div>
-</div> #}
+  <form class="mdui-dialog" id="editDialog">
+    <div class="mdui-dialog-title">编辑/新增</div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-col-xs-10 mdui-col-offset-xs-1">
+        <input style="display: none;" name="id" autocomplete="off"/>
+        <div class="mdui-textfield ">
+          <i class="mdui-icon material-icons">account_circle</i>
+          <label class="mdui-textfield-label">名称</label>
+          <input class="mdui-textfield-input" type="text" name="name" autocomplete="off"/>
+        </div>
+        <div class="mdui-textfield ">
+          <i class="mdui-icon material-icons">lock</i>
+          <label class="mdui-textfield-label">总数</label>
+          <input class="mdui-textfield-input" type="number" name="total_count" autocomplete="off"/>
+        </div>
+      </div>
+    </div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>确定</button>
+    </div>
+  </form>
 
-<script src="/public/js/xxxadmin/index.js"></script>
+  <script src="/public/js/xxxadmin/index.js"></script>
 
 {% endblock %}

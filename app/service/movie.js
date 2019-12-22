@@ -82,6 +82,25 @@ class MovieService extends Service {
     });
     return movies;
   }
+  async findAllAndCount(category = null, pageIndex = 1, pageSize = 18, name = '') {
+    const offset = (pageIndex - 1) * pageSize;
+    const where = [];
+    if (category) {
+      where.push(` category = ${category} `);
+    }
+    if (name) {
+      where.push(` name LIKE '${name}%' `);
+    }
+    let whereStr = '';
+    if (where.length > 0) {
+      whereStr = ' WHERE ' + where.join('AND');
+    }
+    const sql = `SELECT id, name, category, description FROM movies ${whereStr} LIMIT ${offset}, ${pageSize};`;
+    const countSql = `SELECT COUNT(id) FROM movies ${whereStr}`;
+    const [movies, totals] = await Promise.all([this.app.mysql.query(sql), this.app.mysql.query(countSql)]);
+    // console.log(totals);
+    return [movies, totals[0]['COUNT(id)']];
+  }
   async findRecommend(limit = 18) {
     const movies = await this.app.mysql.select('movies', {
       where: {
@@ -152,7 +171,7 @@ class MovieService extends Service {
     // return movie;
     const movie = await this.app.mysql.select('movies', {
       where: { id }, // WHERE 条件
-      columns: ['id', 'name', 'category', 'link_list', 'db_info', 'description'], // 要查询的表字段
+      columns: ['id', 'name', 'category', 'link_list', 'is_recommend', 'db_info', 'description'], // 要查询的表字段
     });
     return movie[0];
   }
@@ -160,24 +179,45 @@ class MovieService extends Service {
     const movies = await this.app.mysql.query(`SELECT id, name, category, description FROM movies WHERE name LIKE "%${name}%" LIMIT 0, 24;`);
     return movies;
   }
-
   async update(movie) {
+    let result;
+    let isAdd = false;
     movie.updated_at = Date.now();
-    const result = await this.app.mysql.update('movies', movie);
+    if (!movie.id) {
+      delete movie.id;
+      movie.created_at = Date.now();
+      result = await this.app.mysql.insert('movies', movie);
+      isAdd = true;
+      movie._id = result.insertId;
+    } else {
+      result = await this.app.mysql.update('movies', movie);
+    }
     const ret = {};
     if (result.affectedRows === 1) {
       ret.dbCode = true;
-      ret.dbCode = true;
       const token = await this.service.weixin.getToken();
-      const res = await this.ctx.curl(`https://api.weixin.qq.com/tcb/databaseupdate?access_token=${token}`, {
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: {
-          env: this.config.weixin.cloudenv,
-          query: `db.collection("category-0${movie.category - 1}").doc(${movie.id}).update({data: { linkList: ${movie.link_list} }});`,
-        },
-      });
+      let res;
+      if (isAdd) {
+        res = await this.ctx.curl(`https://api.weixin.qq.com/tcb/databaseadd?access_token=${token}`, {
+          method: 'POST',
+          contentType: 'json',
+          dataType: 'json',
+          data: {
+            env: this.config.weixin.cloudenv,
+            query: `db.collection("category-0${movie.category - 1}").add({data: [${JSON.stringify(movie)}]});`,
+          },
+        });
+      } else {
+        res = await this.ctx.curl(`https://api.weixin.qq.com/tcb/databaseupdate?access_token=${token}`, {
+          method: 'POST',
+          contentType: 'json',
+          dataType: 'json',
+          data: {
+            env: this.config.weixin.cloudenv,
+            query: `db.collection("category-0${movie.category - 1}").doc(${movie.id}).update({data: { linkList: ${movie.link_list} }});`,
+          },
+        });
+      }
       if (res.status === 200) {
         const data = res.data;
         if (data.errcode === 0) {

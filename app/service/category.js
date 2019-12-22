@@ -42,7 +42,7 @@ class CategoryService extends Service {
   async find(id) {
     const category = await this.app.mysql.select('category', {
       where: { id }, // WHERE 条件
-      columns: ['id', 'name', 'total_count'], // 要查询的表字段
+      columns: [ 'id', 'name', 'total_count' ], // 要查询的表字段
     });
     return category[0];
     // id = +id;
@@ -57,18 +57,13 @@ class CategoryService extends Service {
     // return category;
   }
   async update(category) {
-    const row = {
-      id: category.id,
-      name: category.name,
-      total_count: category.total_count,
-      url: category.url,
-      updated_at: this.app.mysql.literals.now,
-    };
-    const result = await this.app.mysql.update('category', row);
+    category.updated_at = Date.now();
+    const result = await this.app.mysql.update('category', category);
     const id = parseInt(category.id);
     const ret = {};
     if (result.affectedRows === 1) {
       ret.dbCode = true;
+      await await this.app.cache.del('categories');
       const token = await this.service.weixin.getToken();
       const res = await this.ctx.curl(`https://api.weixin.qq.com/tcb/databaseupdate?access_token=${token}`, {
         method: 'POST',
@@ -76,10 +71,9 @@ class CategoryService extends Service {
         dataType: 'json',
         data: {
           env: this.config.weixin.cloudenv,
-          query: `db.collection("categories").doc("category-0${id}").update({data: { text: '${row.name}', totalCount: ${row.total_count}, url: '${row.url}' }});`,
+          query: `db.collection("categories").doc("category-0${id - 1}").update({data: { text: '${category.name}', totalCount: ${category.total_count}, updatedAt: ${category.updated_at} }});`,
         },
       });
-
       if (res.status === 200) {
         const data = res.data;
         if (data.errcode === 0) {

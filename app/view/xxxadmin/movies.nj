@@ -1,8 +1,130 @@
 {% extends "./base.nj" %}
 
 {% block body %}
-<table id="table"></table>
+  <style>
+    .search-area {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      background: #efefef;
+      margin: 0 10px 15px;
+    }
+    .search-area .sa-ele {
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 12px;
+    }
+    .search-area .sa-ele .se-title {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .search-area .sa-ele .se-con {
+      display: inline-block;
+      width: 180px;
+      height: 24px;
+      border: 1px solid #ccc;
+      padding: 0 4px;
+      line-height: 24px;
+    }
+  </style>
+  <form class="search-area" id="searchForm">
+    <div class="sa-ele">
+      <label class="se-title">标题:</label>
+      <input class="se-con" name="search_name">
+    </div>
+    <div class="sa-ele">
+      <label class="se-title">博文分类:</label>
+      <select class="se-con" name="search_category">
+        <option value="0">全部分类</option>
+        <option value="2">奇幻/科幻</option>
+        <option value="3">律政/医务</option>
+        <option value="4">情景/喜剧</option>
+        <option value="5">罪案/谍战</option>
+        <option value="6">历史/剧情</option>
+        <option value="7">动作/战争</option>
+        <option value="8">都市/情感</option>
+        <option value="9">灵异/惊悚</option>
+        <option value="10">动漫/卡通</option>
+      </select>
+    </div>
+    <div class="sa-ele">
+      <button class="search-action" type="submit">搜索</button>
+      <button class="reset-action" type="reset">重置</button>
+    </div>
+    <button class="mdui-btn mdui-btn-raised mdui-color-theme" type="button" id="addBtn">添加</button>
+  </form>
+  <table id="table"></table>
 
-<script src="/public/js/xxxadmin/movies.js"></script>
+  <form class="mdui-dialog" id="editDialog">
+    <div class="mdui-dialog-title">编辑/新增</div>
+    <div class="mdui-dialog-content">
+      <div class="mdui-col-xs-10 mdui-col-offset-xs-1">
+        <input style="display: none;" name="id" autocomplete="off"/>
+        <div class="mdui-textfield ">
+          <label class="mdui-textfield-label">名称</label>
+          <input class="mdui-textfield-input" type="text" name="name" autocomplete="off"/>
+        </div>
+        <div class="mdui-textfield">
+          <label class="mdui-textfield-label">分类</label>
+          <select name="category" class="mdui-select">
+            <option value="2">奇幻/科幻</option>
+            <option value="3">律政/医务</option>
+            <option value="4">情景/喜剧</option>
+            <option value="5">罪案/谍战</option>
+            <option value="6">历史/剧情</option>
+            <option value="7">动作/战争</option>
+            <option value="8">都市/情感</option>
+            <option value="9">灵异/惊悚</option>
+            <option value="10">动漫/卡通</option>
+          </select>
+        </div>
+        <div class="mdui-textfield">
+          <label class="mdui-textfield-label">是否推荐</label>
+          <select name="is_recommend" class="mdui-select">
+            <option value="0">否</option>
+            <option value="1">是</option>
+          </select>
+        </div>
+        <div class="mdui-textfield ">
+          <label class="mdui-textfield-label">描述</label>
+          <textarea style="width: 98%; height:120px;" name="description" autocomplete="off"></textarea>
+        </div>
+        <div class="mdui-textfield ">
+          <label class="mdui-textfield-label">dbInfo</label>
+          <p contenteditable="true" id="db_info"></p>
+        </div>
+        <div class="mdui-table-fluid" id="tableBox"></div>
+      </div>
+    </div>
+    <div class="mdui-dialog-actions">
+      <button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
+      <button class="mdui-btn mdui-ripple" mdui-dialog-confirm>确定</button>
+    </div>
+  </form>
+
+  <form class="mdui-dialog" id="editLinkDialog" style="z-index:6001;" >
+    <div class="mdui-dialog-content">
+      <div class="mdui-textfield ">
+        <label class="mdui-textfield-label">名称</label>
+        <input class="mdui-textfield-input" type="text" name="txt" id="linkTxt" autocomplete="off"/>
+      </div>
+      <div class="mdui-textfield ">
+        <label class="mdui-textfield-label">大小</label>
+        <input class="mdui-textfield-input" type="text" name="size" id="linkSize" autocomplete="off"/>
+      </div>
+      <div class="mdui-textfield ">
+        <label class="mdui-textfield-label">ed2k</label>
+        <textarea style="width: 98%; height:120px;" name="ed2k" id="linkEd2k" autocomplete="off"></textarea>
+      </div>
+      <div class="mdui-textfield ">
+        <label class="mdui-textfield-label">magnet</label>
+        <textarea style="width: 98%; height:120px;" name="magnet" id="linkMagnet" autocomplete="off"></textarea>
+      </div>
+      <div class="mdui-col">
+        <button class="mdui-btn mdui-btn-block mdui-color-theme-accent mdui-ripple" type="submit">确定</button>
+      </div>
+    </div>
+  </from>
+
+  <script src="/public/js/xxxadmin/movies.js"></script>
 
 {% endblock %}
